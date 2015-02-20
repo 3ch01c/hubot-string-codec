@@ -4,22 +4,25 @@
   "version": "0.0.0",
   "author": "knjcode <knjcode@gmail.com>",
   "license": "MIT",
-
-  "keywords": ["hubot","hubot-scripts","encode","decode","hash","crypto","cipher"],
-
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "encode",
+    "decode",
+    "hash",
+    "crypto",
+    "cipher"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/prototype-cafe/hubot-string-codec.git"
   },
-
   "bugs": {
     "url": "https://github.com/prototype-cafe/hubot-string-codec/issues"
   },
-
   "dependencies": {
     "coffee-script": "^1.9.1"
   },
-
   "devDependencies": {
     "boolify-string": "^0.1.0",
     "coveralls": "^2.11.2",
@@ -39,9 +42,7 @@
     "power-assert": "^0.10.2",
     "sinon": "^1.12.2"
   },
-
   "main": "index.coffee",
-
   "scripts": {
     "test": "gulp test"
   }
