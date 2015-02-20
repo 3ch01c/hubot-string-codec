@@ -22,19 +22,20 @@ crypto = require 'crypto'
 
 allencoder = []
 encalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url',
-            'unixtimestamp']
+            'unixtime']
 enchashes = ['md5', 'sha', 'sha1', 'sha256', 'sha512', 'rmd160', 'whirlpool']
 allenchashes = crypto.getHashes()
 allencoder = allencoder.concat(encalgos,allenchashes)
 
 alldecoder = []
-decalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url']
+decalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url',
+            'unixtime']
 dechashes = []
 alldecoder = alldecoder.concat(decalgos,dechashes)
 
 
 module.exports = (robot) ->
-  robot.respond /enc(:.*)? (.*)?/i, (msg) ->
+  robot.respond /enc(:\w*)? (.*)?/i, (msg) ->
     algo = if msg.match[1] isnt undefined then msg.match[1] else ''
     str = if msg.match[2] isnt undefined then msg.match[2] else ''
     algo = algo[1..] if algo
@@ -53,7 +54,7 @@ module.exports = (robot) ->
         else
           msg.send algo + ' algorithm is not supported'
 
-  robot.respond /dec(:.*)? (.*)?/i, (msg) ->
+  robot.respond /dec(:\w*)? (.*)?/i, (msg) ->
     algo = if msg.match[1] isnt undefined then msg.match[1] else ''
     str = if msg.match[2] isnt undefined then msg.match[2] else ''
     algo = algo[1..] if algo
@@ -123,10 +124,6 @@ rot47 = (str) ->
 rev = (str) ->
   str.split('').reverse().join('')
 
-# unixtimestamp converter
-unixtimestamp = (str) ->
-  # convert str to unixtimestamp
-
 # reciprocal cipher helper
 recipro = {
   rot13: rot13,
@@ -145,10 +142,10 @@ encoder = (str, algo) ->
         #new Buffer(str, 'hex').toString('utf8')
     when 'rot13', 'rot47', 'rev'
       recipro[algo](str)
-    when 'unixtimestamp'
-      unixtimestamp(str)
     when 'url'
       encodeURIComponent(str)
+    when 'unixtime'
+      Date.parse(str)
     else
       if algo in allenchashes
         crypto.createHash(algo).update(str, 'utf8').digest('hex')
@@ -167,5 +164,7 @@ decoder = (str, algo) ->
       recipro[algo](str)
     when 'url'
       decodeURIComponent(str)
+    when 'unixtime'
+      new Date(parseInt(str))
     else
       return 'not implemented'

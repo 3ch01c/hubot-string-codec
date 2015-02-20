@@ -25,6 +25,11 @@ hubot>> cHJvdG90eXBlLWNhZmU=
 user1>> hubot dec:base64 cHJvdG90eXBlLWNhZmU=
 hubot>> prototype-cafe
 
+user1>> hubot enc:unixtime Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
+hubot>> 1424437680000
+user1>> hubot dec:unixtime 1424437680000
+hubot>> Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
+
 user1>> hubot enc helloworld
 hubot>> hex: 68656c6c6f776f726c64
 hubot>> ascii:
@@ -33,7 +38,7 @@ hubot>> rot13: uryybjbeyq
 hubot>> rot47: 96==@H@C=5
 hubot>> rev: dlrowolleh
 hubot>> url: helloworld
-hubot>> unixtimestamp: undefined
+hubot>> unixtime: NaN
 hubot>> md5: fc5e038d38a57032085441e7fe7010b0
 hubot>> sha: c8b442aacaa1afa67cf37d38f01df3d21f50d1a3
 hubot>> sha1: 6adfb183a4a2c94a2f92dab5ade762a47889a5a1
@@ -45,7 +50,7 @@ hubot>> whirlpool: 807fb49ba72ce04205dc9bbfbc3481f189f8b1730571b6f588001ec4f37b9
 
 ## TODO
 
-Implement unixtimestamp, sha2, hash decoder, omakase decoder
+Implement sha2, hash decoder, omakase decoder
 
 ## Acknowledgements
 
