@@ -23,7 +23,8 @@ crypto = require 'crypto'
 allencoder = []
 encalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url',
             'unixtime']
-enchashes = ['md5', 'sha', 'sha1', 'sha256', 'sha512', 'rmd160', 'whirlpool']
+enchashes = ['md4', 'md5', 'sha', 'sha1', 'sha224', 'sha256', 'sha384',
+             'sha512', 'rmd160', 'whirlpool']
 allenchashes = crypto.getHashes()
 allencoder = allencoder.concat(encalgos,allenchashes)
 
