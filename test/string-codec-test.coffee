@@ -12,10 +12,10 @@ describe 'string-codec', ->
     require('../src/string-codec')(@robot)
 
   it 'registers a respond enc listener', ->
-    assert.ok(@robot.respond.calledWith(/enc(:.*)? (.*)?/i))
+    assert.ok(@robot.respond.calledWith(/enc(:\w*)? (.*)?/i))
 
   it 'registers a respond dec listener', ->
-    assert.ok(@robot.respond.calledWith(/dec(:.*)? (.*)?/i))
+    assert.ok(@robot.respond.calledWith(/dec(:\w*)? (.*)?/i))
 
   it 'registers a respond enc:list listener', ->
     assert.ok(@robot.respond.calledWith(/enc:list/i))
