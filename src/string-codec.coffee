@@ -165,3 +165,6 @@ decoder = (str, algo) ->
       new Date(parseInt(str)).toString('utf8')
     else
       return 'not implemented'
+
+module.exports.encoder = encoder
+module.exports.decoder = decoder
