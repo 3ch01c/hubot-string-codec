@@ -85,10 +85,7 @@ module.exports = (robot) ->
 hextoascii = (str) ->
   ret_str = ''
   hex = str.replace(/0x|:/g, '')
-  hex = hex.split(/([0-9a-f]{2})/gi)
-  for i in [0...hex.length]
-    ret_str += String.fromCharCode(parseInt(hex[i],16))
-  return ret_str
+  new Buffer(hex, 'hex')
 
 # rot13 cipher
 rot13 = (str) ->
@@ -139,8 +136,7 @@ encoder = (str, algo) ->
       new Buffer(str).toString(algo)
     when 'ascii'
       if not (str.length % 2)
-        hextoascii(str)
-        #new Buffer(str, 'hex').toString('utf8')
+        hextoascii(str).toString('utf8')
     when 'rot13', 'rot47', 'rev'
       recipro[algo](str)
     when 'url'
