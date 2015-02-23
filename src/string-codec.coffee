@@ -162,6 +162,6 @@ decoder = (str, algo) ->
     when 'url'
       decodeURIComponent(str)
     when 'unixtime'
-      new Date(parseInt(str))
+      new Date(parseInt(str)).toString('utf8')
     else
       return 'not implemented'
