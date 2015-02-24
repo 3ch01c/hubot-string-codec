@@ -81,11 +81,12 @@ module.exports = (robot) ->
     msg.send alldecoder.toString()
 
 
-# hex to ascii converter
-hextoascii = (str) ->
-  ret_str = ''
-  hex = str.replace(/0x|:/g, '')
-  new Buffer(hex, 'hex')
+# hex parse helper
+hex_parse = (str) ->
+  if not (str.length % 2)
+    str.replace(/0x|:/g, '')
+  else
+    false
 
 # rot13 cipher
 rot13 = (str) ->
@@ -135,8 +136,8 @@ encoder = (str, algo) ->
     when 'hex', 'base64'
       new Buffer(str).toString(algo)
     when 'ascii'
-      if not (str.length % 2)
-        hextoascii(str).toString('utf8')
+      if hex = hex_parse(str)
+        Buffer(hex, 'hex').toString('utf8')
     when 'rot13', 'rot47', 'rev'
       recipro[algo](str)
     when 'url'
