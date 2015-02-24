@@ -143,7 +143,7 @@ encoder = (str, algo) ->
     when 'url'
       encodeURIComponent(str)
     when 'unixtime'
-      Date.parse(str)
+      Date.parse(str).toString(10)
     else
       if algo in allenchashes
         crypto.createHash(algo).update(str, 'utf8').digest('hex')
