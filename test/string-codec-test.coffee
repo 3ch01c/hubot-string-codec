@@ -16,6 +16,8 @@ encode_testset =
     'abc':'YWJj'
     'def':'ZGVm'
     'ghi':'Z2hp'
+  'ascii85':
+    'abc':'<~@:E^~>'
   'base91':
     '0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b':'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE'
     '0x0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b':'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE'
@@ -26,6 +28,10 @@ encode_testset =
     'abc':'234'
   'rev':
     'abc':'cba'
+  'z85':
+    'abc':'vpAZ'
+  'rfc1924':
+    '2001:db8:100:f101::1':'9R}vSQZ1W=8fRv3*HAqn'
   'url':
     'あいうえお':'%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A'
   'unixtime':
@@ -65,6 +71,8 @@ decode_testset =
     'YWJj':'abc'
     'ZGVm':'def'
     'Z2hp':'ghi'
+  'ascii85':
+    '<~@:E^~>':'abc'
   'base91':
     'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE':'0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b'
   'rot13':
@@ -73,6 +81,10 @@ decode_testset =
     '234':'abc'
   'rev':
     'cba':'abc'
+  'z85':
+    'vpAZ':'abc'
+  'rfc1924':
+    '9R}vSQZ1W=8fRv3*HAqn':'2001:db8:100:f101::1'
   'url':
     '%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A':'あいうえお'
   # depends on local timezone

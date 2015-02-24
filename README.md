@@ -30,14 +30,22 @@ hubot>> 1424437680000
 user1>> hubot dec:unixtime 1424437680000
 hubot>> Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
 
+user1>> hubot enc:rfc1924 2001:db8:100:f101::1
+hubot>> 9R}vSQZ1W=8fRv3*HAqn
+user1>> hubot dec:rfc1924 9R}vSQZ1W=8fRv3*HAqn
+hubot>> 2001:db8:100:f101::1
+
 user1>> hubot enc helloworld
 hubot>> hex: 68656c6c6f776f726c64
 hubot>> ascii:
 hubot>> base64: aGVsbG93b3JsZA==
+hubot>> ascii85: <~BOu!rDg-,?Ch*~>
 hubot>> base91:
 hubot>> rot13: uryybjbeyq
 hubot>> rot47: 96==@H@C=5
 hubot>> rev: dlrowolleh
+hubot>> z85: xK#0@z*cbuy?9
+hubot>> rfc1924: false
 hubot>> url: helloworld
 hubot>> unixtime: NaN
 hubot>> md4: 793033db97268fc9ceebde269797e54b
@@ -60,3 +68,4 @@ Implement sha2, hash decoder, omakase decoder
 
 - @_rintaro_f
 - [basE91 encoding](http://base91.sourceforge.net/) based on [mscdex/base91.js](https://github.com/mscdex/base91.js)
+- Ascii85/z85/rfc1924 encodings based on [noseglid/base85](https://github.com/noseglid/base85)

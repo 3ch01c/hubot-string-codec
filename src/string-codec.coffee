@@ -19,19 +19,20 @@
 #   knjcode <knjcode@gmail.com>
 
 crypto = require 'crypto'
+base85 = require '../lib/base85'
 base91 = require '../lib/base91'
 
 allencoder = []
-encalgos = ['hex', 'ascii', 'base64', 'base91', 'rot13', 'rot47', 'rev', 'url',
-            'unixtime']
+encalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13', 'rot47',
+            'rev', 'z85', 'rfc1924', 'url', 'unixtime']
 enchashes = ['md4', 'md5', 'sha', 'sha1', 'sha224', 'sha256', 'sha384',
              'sha512', 'rmd160', 'whirlpool']
 allenchashes = crypto.getHashes()
 allencoder = allencoder.concat(encalgos,allenchashes)
 
 alldecoder = []
-decalgos = ['hex', 'ascii', 'base64', 'base91', 'rot13', 'rot47', 'rev', 'url',
-            'unixtime']
+decalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13', 'rot47',
+            'rev', 'z85', 'rfc1924', 'url', 'unixtime']
 dechashes = []
 alldecoder = alldecoder.concat(decalgos,dechashes)
 
@@ -137,6 +138,8 @@ encoder = (str, algo) ->
   switch algo
     when 'hex', 'base64'
       new Buffer(str).toString(algo)
+    when 'ascii85'
+      base85.encode(str, 'ascii85')
     when 'base91'
       if hex = hex_parse(str)
         base91.encode(Buffer(hex, 'hex')).toString('utf8')
@@ -145,6 +148,10 @@ encoder = (str, algo) ->
         Buffer(hex, 'hex').toString('utf8')
     when 'rot13', 'rot47', 'rev'
       recipro[algo](str)
+    when 'z85'
+      base85.encode(str, 'z85')
+    when 'rfc1924'
+      base85.encode(str, 'ipv6')
     when 'url'
       encodeURIComponent(str)
     when 'unixtime'
@@ -161,12 +168,18 @@ decoder = (str, algo) ->
         new Buffer(str, algo).toString('utf8')
     when 'base64'
       new Buffer(str, algo).toString('utf8')
+    when 'ascii85'
+      base85.decode(str, 'ascii85').toString('utf8')
     when 'base91'
       base91.decode(str).toString('hex')
     when 'ascii'
       new Buffer(str, algo).toString('hex')
     when 'rot13', 'rot47', 'rev'
       recipro[algo](str)
+    when 'z85'
+      base85.decode(str, 'z85').toString('utf8')
+    when 'rfc1924'
+      base85.decode(str, 'ipv6').toString('utf8')
     when 'url'
       decodeURIComponent(str)
     when 'unixtime'
