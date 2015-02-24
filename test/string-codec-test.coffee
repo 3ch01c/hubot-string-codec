@@ -16,6 +16,10 @@ encode_testset =
     'abc':'YWJj'
     'def':'ZGVm'
     'ghi':'Z2hp'
+  'base91':
+    '0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b':'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE'
+    '0x0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b':'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE'
+    '0f:00:9e:81:28:22:21:64:14:e8:49:e1:0b:d2:f1:28:e1:27:db:e2:45:5c:05:78:2c:51:ec:f1:b8:b0:0b':'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE'
   'rot13':
     'abc':'nop'
   'rot47':
@@ -54,13 +58,15 @@ decode_testset =
     '616263':'abc'
     '646566':'def'
     '676869':'ghi'
-    'あいうえお':'e38182e38184e38186e38188e3818a'
+    'e38182e38184e38186e38188e3818a':'あいうえお'
   'ascii':
     'abc':'616263'
   'base64':
     'YWJj':'abc'
     'ZGVm':'def'
     'Z2hp':'ghi'
+  'base91':
+    'PASSWORD/IS/WHICH+ENCODING+DO+YOU+LIKE':'0f009e812822216414e849e10bd2f128e127dbe2455c05782c51ecf1b8b00b'
   'rot13':
     'nop':'abc'
   'rot47':
@@ -76,15 +82,19 @@ decode_testset =
 
 describe 'encode test', ->
   for algo, testset of encode_testset
-    it algo + ' encode test', ->
+    do (algo, testset) ->
       for key, value of testset
-        assert codec.encoder(key, algo) == value
+        do (key, value) ->
+          it algo + ': ' + key + ' -> ' + value, ->
+            assert codec.encoder(key, algo) is value
 
 describe 'decode test', ->
   for algo, testset of decode_testset
-    it algo + ' decode test', ->
+    do (algo, testset) ->
       for key, value of testset
-        assert codec.decoder(key, algo) == value
+        do (key, value) ->
+          it algo + ': ' + key + ' -> ' + value, ->
+            assert codec.decoder(key, algo) is value
 
 describe 'string-codec', ->
   beforeEach ->
