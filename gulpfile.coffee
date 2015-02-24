@@ -24,6 +24,9 @@ paths =
   source: [
     './src/**/*.coffee'
   ]
+  libs: [
+    './lib/**/*'
+  ]
 
 
 gulp.task 'lint', ->
@@ -41,6 +44,8 @@ gulp.task 'compile', ['lint'], ->
       .pipe($.coffee(bare: true).on('error', $.util.log))
       .pipe $.sourcemaps.write()
       .pipe gulp.dest('./compile/src')
+    gulp.src paths.libs
+      .pipe gulp.dest('./compile/lib')
     gulp.src paths.tests
       .pipe $.sourcemaps.init()
       .pipe($.coffee({ bare: true }).on('error', $.util.log))
