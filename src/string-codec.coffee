@@ -19,9 +19,10 @@
 #   knjcode <knjcode@gmail.com>
 
 crypto = require 'crypto'
+base91 = require '../lib/base91'
 
 allencoder = []
-encalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url',
+encalgos = ['hex', 'ascii', 'base64', 'base91', 'rot13', 'rot47', 'rev', 'url',
             'unixtime']
 enchashes = ['md4', 'md5', 'sha', 'sha1', 'sha224', 'sha256', 'sha384',
              'sha512', 'rmd160', 'whirlpool']
@@ -29,7 +30,7 @@ allenchashes = crypto.getHashes()
 allencoder = allencoder.concat(encalgos,allenchashes)
 
 alldecoder = []
-decalgos = ['hex', 'ascii', 'base64', 'rot13', 'rot47', 'rev', 'url',
+decalgos = ['hex', 'ascii', 'base64', 'base91', 'rot13', 'rot47', 'rev', 'url',
             'unixtime']
 dechashes = []
 alldecoder = alldecoder.concat(decalgos,dechashes)
@@ -135,6 +136,9 @@ encoder = (str, algo) ->
   switch algo
     when 'hex', 'base64'
       new Buffer(str).toString(algo)
+    when 'base91'
+      if hex = hex_parse(str)
+        base91.encode(Buffer(hex, 'hex')).toString('utf8')
     when 'ascii'
       if hex = hex_parse(str)
         Buffer(hex, 'hex').toString('utf8')
@@ -156,6 +160,8 @@ decoder = (str, algo) ->
         new Buffer(str, algo).toString('utf8')
     when 'base64'
       new Buffer(str, algo).toString('utf8')
+    when 'base91'
+      base91.decode(str).toString('hex')
     when 'ascii'
       new Buffer(str, algo).toString('hex')
     when 'rot13', 'rot47', 'rev'
