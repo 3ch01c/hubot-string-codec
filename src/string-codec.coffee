@@ -84,8 +84,9 @@ module.exports = (robot) ->
 
 # hex parse helper
 hex_parse = (str) ->
-  if not (str.length % 2)
-    str.replace(/0x|:/g, '')
+  hex = str.replace(/0x|:/g, '')
+  if not (hex.length % 2)
+    hex
   else
     false
 
