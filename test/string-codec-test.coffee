@@ -32,6 +32,18 @@ encode_testset =
     'abc':'vpAZ'
   'rfc1924':
     '2001:db8:100:f101::1':'9R}vSQZ1W=8fRv3*HAqn'
+  'crc1':
+    'abc':'26'
+  'crc8':
+    'abc':'5f'
+  'crc16':
+    'abc':'9738'
+  'crc24':
+    'abc':'ba1c7b'
+  'crc32':
+    'abc':'352441c2'
+  'adler32':
+    'abc':'24d0127'
   'url':
     'あいうえお':'%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A'
   'unixtime':

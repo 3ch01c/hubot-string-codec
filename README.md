@@ -62,10 +62,12 @@ hubot>> whirlpool: 807fb49ba72ce04205dc9bbfbc3481f189f8b1730571b6f588001ec4f37b9
 
 ## TODO
 
-Implement sha2, hash decoder, omakase decoder
+Implement hash decoder, omakase decoder
 
 ## Acknowledgements
 
 - @_rintaro_f
-- [basE91 encoding](http://base91.sourceforge.net/) based on [mscdex/base91.js](https://github.com/mscdex/base91.js)
-- Ascii85/z85/rfc1924 encodings based on [noseglid/base85](https://github.com/noseglid/base85)
+- basE91 based on [mscdex/base91.js](https://github.com/mscdex/base91.js)
+- Ascii85/z85/rfc1924 based on [noseglid/base85](https://github.com/noseglid/base85)
+- crc1/crc8/crc16/crc24/crc32 [alexgorbatchev/node-crc](https://github.com/alexgorbatchev/node-crc)
+- adler32 [SheetJS/js-adler32](https://github.com/SheetJS/js-adler32)

@@ -21,18 +21,21 @@
 crypto = require 'crypto'
 base85 = require '../lib/base85'
 base91 = require '../lib/base91'
+crc = require 'crc'
+adler32 = require 'adler-32'
 
 allencoder = []
-encalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13', 'rot47',
-            'rev', 'z85', 'rfc1924', 'url', 'unixtime']
+encalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13',
+            'rot47', 'rev', 'z85', 'rfc1924', 'crc1', 'crc8', 'crc16',
+            'crc24', 'crc32', 'adler32', 'url', 'unixtime']
 enchashes = ['md4', 'md5', 'sha', 'sha1', 'sha224', 'sha256', 'sha384',
              'sha512', 'rmd160', 'whirlpool']
 allenchashes = crypto.getHashes()
 allencoder = allencoder.concat(encalgos,allenchashes)
 
 alldecoder = []
-decalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13', 'rot47',
-            'rev', 'z85', 'rfc1924', 'url', 'unixtime']
+decalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13',
+            'rot47', 'rev', 'z85', 'rfc1924', 'url', 'unixtime']
 dechashes = []
 alldecoder = alldecoder.concat(decalgos,dechashes)
 
@@ -152,6 +155,10 @@ encoder = (str, algo) ->
       base85.encode(str, 'z85')
     when 'rfc1924'
       base85.encode(str, 'ipv6')
+    when 'crc1', 'crc8', 'crc16', 'crc24', 'crc32'
+      crc[algo](str).toString(16)
+    when 'adler32'
+      adler32.str(str).toString(16)
     when 'url'
       encodeURIComponent(str)
     when 'unixtime'
