@@ -46,6 +46,12 @@ hubot>> rot47: 96==@H@C=5
 hubot>> rev: dlrowolleh
 hubot>> z85: xK#0@z*cbuy?9
 hubot>> rfc1924: false
+hubot>> crc1: 3c
+hubot>> crc8: d2
+hubot>> crc16: cdd3
+hubot>> crc24: 4d1aa7
+hubot>> crc32: f9eb20ad
+hubot>> adler32: 1736043d
 hubot>> url: helloworld
 hubot>> unixtime: NaN
 hubot>> md4: 793033db97268fc9ceebde269797e54b
@@ -59,6 +65,63 @@ hubot>> sha512: 1594244d52f2d8c12b142bb61f47bc2eaf503d6d9ca8480cae9fcf112f66e496
 hubot>> rmd160: 8a73c5438c28e79e696144fa869886f240cfaddb
 hubot>> whirlpool: 807fb49ba72ce04205dc9bbfbc3481f189f8b1730571b6f588001ec4f37b97e12bc8cefd03598dace3c1118221bf3af78a8f5958c0f59c848af9bc8a6034ea7e
 ```
+
+## Supported specifications
+
+### encoder
+
+|algorithm|input|output|
+|:--|:--|:--|
+|hex|string|hex string|
+|ascii|hex string|string|
+|base64|string|base64|
+|ascii85 (base85)|string|ascii85|
+|base91|hex string|string|
+|ro13|string|string|
+|rot47|string|string|
+|rev (reverse string)|string|string|
+|z85|string|z85|
+|rfc1924 (base85 IPv6)|IPv6 address|base85 IPv6 string|
+|crc1/crc8/crc16/crc24/crc32|string|crc checksum|
+|adler32|string|adler32|
+|url (url encoding)|string|url encode|
+|unixtime|date string|unix timestamp|
+|md4|string|md4|
+|md5|string|md5|
+|sha|string|sha|
+|sha1|string|sha1|
+|sha224|string|sha224|
+|sha256|string|sha256|
+|sha384|string|sha384|
+|sha512|string|sha512|
+|rmd160|string|rmd160|
+|whirlpool|string|whirlpool|
+
+Others:  
+DSA,DSA-SHA,DSA-SHA1,DSA-SHA1-old,RSA-MD4,RSA-MD5,RSA-MDC2,RSA-RIPEMD160,  
+RSA-SHA,RSA-SHA1,RSA-SHA1-2,RSA-SHA224,RSA-SHA256,RSA-SHA384,RSA-SHA512,  
+dsaEncryption,dsaWithSHA,dsaWithSHA1,dss1,ecdsa-with-SHA1,md4WithRSAEncryption,  
+md5WithRSAEncryption,mdc2,mdc2WithRSA,ripemd,ripemd160,ripemd160WithRSA,  
+sha1WithRSAEncryption,sha224WithRSAEncryption,sha256WithRSAEncryption,  
+sha384WithRSAEncryption,sha512WithRSAEncryption,shaWithRSAEncryption,ssl2-md5,  
+ssl3-md5,ssl3-sha1
+
+### decoder
+
+|algorithm|input|output|
+|:--|:--|:--|
+|hex|hex string|string|
+|ascii|string|hex string|
+|base64|base64|string|
+|ascii85|ascii85|string|
+|base91|base91|hex string|
+|rot13|string|string|
+|rot47|string|string|
+|rev|string|string|
+|z85|z85|string|
+|rfc1924|base85 IPv6 string|IPv6 address|
+|url|url encode|string|
+|unixtime|unix timestamp|date string|
 
 ## TODO
 
