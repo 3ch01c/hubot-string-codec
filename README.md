@@ -57,13 +57,7 @@ hubot>> unixtime: NaN
 hubot>> md4: 793033db97268fc9ceebde269797e54b
 hubot>> md5: fc5e038d38a57032085441e7fe7010b0
 hubot>> sha: c8b442aacaa1afa67cf37d38f01df3d21f50d1a3
-hubot>> sha1: 6adfb183a4a2c94a2f92dab5ade762a47889a5a1
-hubot>> sha224: b033d770602994efa135c5248af300d81567ad5b59cec4bccbf15bcc
-hubot>> sha256: 936a185caaa266bb9cbe981e9e05cb78cd732b0b3280eb944412bb6f8f8f07af
-hubot>> sha384: 97982a5b1414b9078103a1c008c4e3526c27b41cdbcf80790560a40f2a9bf2ed4427ab1428789915ed4b3dc07c454bd9
-hubot>> sha512: 1594244d52f2d8c12b142bb61f47bc2eaf503d6d9ca8480cae9fcf112f66e4967dc5e8fa98285e36db8af1b8ffa8b84cb15e0fbcf836c3deb803c13f37659a60
-hubot>> rmd160: 8a73c5438c28e79e696144fa869886f240cfaddb
-hubot>> whirlpool: 807fb49ba72ce04205dc9bbfbc3481f189f8b1730571b6f588001ec4f37b97e12bc8cefd03598dace3c1118221bf3af78a8f5958c0f59c848af9bc8a6034ea7e
+...
 ```
 
 ## Supported specifications
@@ -82,7 +76,7 @@ hubot>> whirlpool: 807fb49ba72ce04205dc9bbfbc3481f189f8b1730571b6f588001ec4f37b9
 |rev (reverse string)|string|string|
 |z85|string|z85|
 |rfc1924 (base85 IPv6)|IPv6 address|base85 IPv6 string|
-|crc1/crc8/crc16/crc24/crc32|string|crc checksum|
+|crc1/crc8/crc16<br>crc24/crc32|string|crc checksum|
 |adler32|string|adler32|
 |url (url encoding)|string|url encode|
 |unixtime|date string|unix timestamp|
