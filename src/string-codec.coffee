@@ -144,7 +144,7 @@ decmd5 = (str) ->
   res = request('GET', baseUrl + str)
   $ = cheerio.load res.getBody('utf8')
   ret_str = $('strong.result').text()
-  if ret_str
+  if str is encoder(ret_str,'md5')
     ret_str
   else
     'not found'
