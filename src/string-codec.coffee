@@ -23,6 +23,8 @@ base85 = require '../lib/base85'
 base91 = require '../lib/base91'
 crc = require 'crc'
 adler32 = require 'adler-32'
+cheerio = require 'cheerio'
+request = require 'sync-request'
 
 allencoder = []
 encalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13',
@@ -36,7 +38,7 @@ allencoder = allencoder.concat(encalgos,allenchashes)
 alldecoder = []
 decalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13',
             'rot47', 'rev', 'z85', 'rfc1924', 'url', 'unixtime']
-dechashes = []
+dechashes = ['md5']
 alldecoder = alldecoder.concat(decalgos,dechashes)
 
 
@@ -136,6 +138,23 @@ recipro = {
   rev: rev
 }
 
+# md5 decrypter
+decmd5 = (str) ->
+  baseUrl = 'http://www.md5-hash.com/md5-hashing-decrypt/'
+  res = request('GET', baseUrl + str)
+  $ = cheerio.load res.getBody('utf8')
+  ret_str = $('strong.result').text()
+  if ret_str
+    ret_str
+  else
+    'not found'
+
+# decrypter helper
+decrypter = {
+  md5: decmd5
+}
+
+
 # encode helper
 encoder = (str, algo) ->
   switch algo
@@ -191,6 +210,8 @@ decoder = (str, algo) ->
       decodeURIComponent(str)
     when 'unixtime'
       new Date(parseInt(str)).toString('utf8')
+    when 'md5'
+      decrypter[algo](str)
     else
       return 'not implemented'
 

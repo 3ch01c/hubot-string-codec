@@ -21,9 +21,13 @@ Then add **hubot-string-codec** to your `external-scripts.json`:
 ```
 user1>> hubot enc:base64 prototype-cafe
 hubot>> cHJvdG90eXBlLWNhZmU=
-
 user1>> hubot dec:base64 cHJvdG90eXBlLWNhZmU=
 hubot>> prototype-cafe
+
+user1>> hubot enc:md5 helloworld
+hubot>> fc5e038d38a57032085441e7fe7010b0
+user1>> hubot dec:md5 fc5e038d38a57032085441e7fe7010b0
+hubot>> helloworld
 
 user1>> hubot enc:unixtime Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
 hubot>> 1424437680000
@@ -128,3 +132,4 @@ Implement hash decoder, omakase decoder
 - Ascii85/z85/rfc1924 based on [noseglid/base85](https://github.com/noseglid/base85)
 - crc1/crc8/crc16/crc24/crc32 [alexgorbatchev/node-crc](https://github.com/alexgorbatchev/node-crc)
 - adler32 [SheetJS/js-adler32](https://github.com/SheetJS/js-adler32)
+- MD5 decrypter [MD5-hash.com](http://www.md5-hash.com)

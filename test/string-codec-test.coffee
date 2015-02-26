@@ -102,6 +102,8 @@ decode_testset =
   # depends on local timezone
   # 'unixtime':
   #   '1424580000000':'Sun Feb 22 2015 13:40:00 GMT+0900 (JST)'
+  # 'md5':
+  #   '5d41402abc4b2a76b9719d911017c592':'hello'
 
 
 describe 'encode test', ->
