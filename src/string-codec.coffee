@@ -141,7 +141,10 @@ recipro = {
 # md5 decrypter
 decmd5 = (str) ->
   baseUrl = 'http://www.md5-hash.com/md5-hashing-decrypt/'
-  res = request('GET', baseUrl + str)
+  try
+    res = request('GET', baseUrl + str)
+  catch error
+    return error
   $ = cheerio.load res.getBody('utf8')
   ret_str = $('strong.result').text()
   if str is encoder(ret_str,'md5')
