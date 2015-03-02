@@ -5,14 +5,14 @@
 #   None
 #
 # Commands:
-#   hubot enc <str> - list encoded and hashed string
-#   hubot enc:algo <str> - list encoded or hashed string by specified algorithm
-#   hubot enc:all <str> - list all available encodings and hashes of string
+#   hubot enc <str> - list default encodings of string
+#   hubot enc:algo <str> - display encoded string by specified algorithm
+#   hubot enc:all <str> - list all available encodings of string
 #   hubow enc:list - list of all available algorithms
 #
-#   hubot dec <str> - list deocded and dehashed string if available
-#   hubot dec:algo <str> - list specified algorithm decoded or unhashed string
-#   hubot dec:all <str> - list all available decodings and unhashes of string
+#   hubot dec <str> - list default decodings of string
+#   hubot dec:algo <str> - display decoded string by specified algorithm
+#   hubot dec:all <str> - list all available decodings of string
 #   hubot dec:list - list of all available algorithms
 #
 # Author:
