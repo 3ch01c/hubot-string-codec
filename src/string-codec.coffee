@@ -32,7 +32,9 @@ encalgos = ['hex', 'ascii', 'base64', 'ascii85', 'base91', 'rot13',
             'crc24', 'crc32', 'adler32', 'url', 'unixtime']
 enchashes = ['md4', 'md5', 'sha', 'sha1', 'sha224', 'sha256', 'sha384',
              'sha512', 'rmd160', 'whirlpool']
-allenchashes = crypto.getHashes()
+allenchashes = enchashes.concat(crypto.getHashes())
+# dedupe
+allenchashes = allenchashes.filter((x, i, self) -> self.indexOf(x) is i)
 allencoder = allencoder.concat(encalgos,allenchashes)
 
 alldecoder = []
