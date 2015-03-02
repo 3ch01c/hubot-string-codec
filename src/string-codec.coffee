@@ -51,14 +51,14 @@ module.exports = (robot) ->
     algo = algo[1..] if algo
     switch algo
       when 'all'
+        msg.send 'all encodings of ' + str
         for algo in allencoder
           msg.send algo + ': ' + encoder(str, algo)
       else
-        if algo in encalgos
-          msg.send encoder(str, algo)
-        else if algo in allenchashes
+        if algo in allencoder
           msg.send encoder(str, algo)
         else if algo is ''
+          msg.send 'encodings of ' + str
           for algo in encalgos.concat(enchashes)
             msg.send algo + ': ' + encoder(str, algo)
         else
@@ -70,14 +70,14 @@ module.exports = (robot) ->
     algo = algo[1..] if algo
     switch algo
       when 'all'
+        msg.send 'all decodings of ' + str
         for algo in alldecoder
           msg.send algo + ': ' + decoder(str, algo)
       else
-        if algo in decalgos
-          msg.send decoder(str, algo)
-        else if algo in dechashes
+        if algo in alldecoder
           msg.send decoder(str, algo)
         else if algo is ''
+          msg.send 'decodings of ' + str
           for algo in alldecoder
             msg.send algo + ': ' + decoder(str, algo)
         else
