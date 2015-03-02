@@ -40,6 +40,7 @@ user1>> hubot dec:rfc1924 9R}vSQZ1W=8fRv3*HAqn
 hubot>> 2001:db8:100:f101::1
 
 user1>> hubot enc helloworld
+hubot>> encodings of helloworld
 hubot>> hex: 68656c6c6f776f726c64
 hubot>> ascii:
 hubot>> base64: aGVsbG93b3JsZA==
@@ -120,6 +121,7 @@ ssl3-md5,ssl3-sha1
 |rfc1924|base85 IPv6 string|IPv6 address|
 |url|url encode|string|
 |unixtime|unix timestamp|date string|
+|md5|md5|string|
 
 ## TODO
 
