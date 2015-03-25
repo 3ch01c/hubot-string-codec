@@ -4,7 +4,6 @@ gulp = require 'gulp'
 $ = (require 'gulp-load-plugins') lazy: false
 del = require 'del'
 es = require 'event-stream'
-boolifyString = require 'boolify-string'
 
 paths =
   lint: [
@@ -35,7 +34,6 @@ gulp.task 'lint', ->
     .pipe $.coffeelint.reporter()
 
 gulp.task 'clean', del.bind(null, ['./compile'])
-gulp.task 'clean:coverage', del.bind(null, ['./coverage'])
 
 gulp.task 'compile', ['lint'], ->
   es.merge(
@@ -48,30 +46,17 @@ gulp.task 'compile', ['lint'], ->
       .pipe gulp.dest('./compile/lib')
     gulp.src paths.tests
       .pipe $.sourcemaps.init()
-      .pipe($.coffee({ bare: true }).on('error', $.util.log))
+      .pipe($.coffee(bare: true).on('error', $.util.log))
       .pipe $.sourcemaps.write()
       .pipe $.espower()
       .pipe gulp.dest('./compile/test')
   )
-  undefined
 
-gulp.task 'istanbul', ['clean:coverage', 'compile'], (cb) ->
-  gulp.src ['./compile/src/**/*.js']
-    #Covering files
-    .pipe $.istanbul()
-    .on 'finish', ->
-      gulp.src ['./compile/test/**/*.js'], {cwd: __dirname}
-        .pipe $.if(!boolifyString(process.env.CI), $.plumber())
-        .pipe $.mocha()
-        #Creating the reports after tests runned
-        .pipe $.istanbul.writeReports()
-        .on 'finish', ->
-          process.chdir __dirname
-          cb()
-  undefined
+gulp.task 'test', ['compile'], ->
+  gulp.src ['./compile/test/*.js'], {cwd: __dirname}
+    .pipe $.mocha()
 
 gulp.task 'watch', ['test'], ->
   gulp.watch paths.watch, ['test']
 
 gulp.task 'default', ['test']
-gulp.task 'test', ['lint', 'istanbul']
