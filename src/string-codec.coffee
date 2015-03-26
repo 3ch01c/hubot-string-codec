@@ -5,15 +5,15 @@
 #   None
 #
 # Commands:
-#   hubot enc <str> - list default encodings of string
-#   hubot enc:algo <str> - display encoded string by specified algorithm
-#   hubot enc:all <str> - list all available encodings of string
-#   hubow enc:list - list of all available algorithms
+#   hubot enc <string> - list various encoded strings
+#   hubot enc:[algo] <string> - display string encode with specified algorithm
+#   hubot enc:all <string> - list strings encode with all available algorithm
+#   hubow enc:list - list of all available algorithm
 #
-#   hubot dec <str> - list default decodings of string
-#   hubot dec:algo <str> - display decoded string by specified algorithm
-#   hubot dec:all <str> - list all available decodings of string
-#   hubot dec:list - list of all available algorithms
+#   hubot dec <string> - list various decoded strings
+#   hubot dec:[algo] <string> - display string decode with specified algorithm
+#   hubot dec:all <string> - list strings decode with all available algorithm
+#   hubot dec:list - list of all available algorithm
 #
 # Author:
 #   knjcode <knjcode@gmail.com>
