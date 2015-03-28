@@ -14,11 +14,9 @@ paths =
     './gulpfile.coffee'
     './src/**/*.coffee'
     './test/**/*.coffee'
-    '!test/{temp,temp/**}'
   ]
   tests: [
     './test/**/*.coffee'
-    '!test/{temp,temp/**}'
   ]
   source: [
     './src/**/*.coffee'
@@ -27,7 +25,7 @@ paths =
 
 gulp.task 'lint', ->
   gulp.src paths.lint
-    .pipe $.coffeelint('./coffeelint.json')
+    .pipe $.coffeelint()
     .pipe $.coffeelint.reporter()
 
 gulp.task 'clean', del.bind(null, ['./compile'])
