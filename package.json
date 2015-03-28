@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "coffee-script": "^1.9.1",
-    "string-codec": "^0.0.4"
+    "string-codec": "^0.0.5"
   },
   "devDependencies": {
     "del": "^1.1.1",

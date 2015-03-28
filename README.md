@@ -30,8 +30,8 @@ user1> hubot dec:md5 5d41402abc4b2a76b9719d911017c592
 Hubot> hello
 
 user1> hubot enc:unixtime Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
-Hubot> 1424437680000
-user1> hubot dec:unixtime 1424437680000
+Hubot> 1424437680
+user1> hubot dec:unixtime 1424437680
 Hubot> Fri Feb 20 2015 22:08:00 GMT+0900 (JST)
 
 user1> hubot enc helloworld
@@ -84,12 +84,12 @@ hubot dec:list - list of all available algorithm
 
 hex, ascii, base64, base85 (z85), ascii85, base91, rot5/rot13/rot18/rot47,  
 rev (reverse string), crc1/crc8/crc16/crc24/crc32, adler32, url (url encoding),  
-unixtime, lower, upper, md4, md5, sha, sha1, sha224, sha256, sha384, sha512,  
-rmd160, whirlpool
+unixtime, lower, upper, punycode, md4, md5, sha, sha1, sha224, sha256, sha384,  
+sha512, rmd160, whirlpool
 
 ### decode
 
-hex, ascii, base64, base85 (z85), ascii85, base91,  
-rot5/rot13/rot18/rot47, rev, url, unixtime, md5
+hex, ascii, base64, base85 (z85), ascii85, base91, rot5/rot13/rot18/rot47,  
+rev, url, unixtime, punycode, md5
 
 For further details, see [string-codec](https://github.com/knjcode/string-codec)
