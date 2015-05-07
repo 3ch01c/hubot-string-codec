@@ -31,16 +31,18 @@ module.exports = (robot) ->
     algo = algo[1..] if algo
     switch algo
       when 'all'
-        msg.send 'all encodings of ' + str
+        replies = [ 'all encodings of ' + str ]
         for algo in codec.ENC_ALL
-          msg.send algo + ': ' + codec.encoder(str, algo)
+          replies.push algo + ': ' + codec.encoder(str, algo)
+        msg.send replies.join '\n'
       else
         if algo in codec.ENC_ALL
           msg.send codec.encoder(str, algo)
         else if algo is ''
-          msg.send 'encodings of ' + str
+          replies = [ 'encodings of ' + str ]
           for algo in ENC_DEFAULT
-            msg.send algo + ': ' + codec.encoder(str, algo)
+            replies.push algo + ': ' + codec.encoder(str, algo)
+          msg.send replies.join '\n'
         else
           msg.send algo + 'unknown algorithm'
 
@@ -50,16 +52,18 @@ module.exports = (robot) ->
     algo = algo[1..] if algo
     switch algo
       when 'all'
-        msg.send 'all decodings of ' + str
+        replies = [ 'all decodings of ' + str ]
         for algo in codec.DEC_ALL
-          msg.send algo + ': ' + codec.decoder(str, algo)
+          replies.push algo + ': ' + codec.decoder(str, algo)
+        msg.send replies.join '\n'
       else
         if algo in codec.DEC_ALL
           msg.send codec.decoder(str, algo)
         else if algo is ''
-          msg.send 'decodings of ' + str
+          replies = [ 'decodings of ' + str ]
           for algo in codec.DEC_ALL
-            msg.send algo + ': ' + codec.decoder(str, algo)
+            replies.push algo + ': ' + codec.decoder(str, algo)
+          msg.send replies.join '\n'
         else
           msg.send algo + 'unknown algorithm'
 
