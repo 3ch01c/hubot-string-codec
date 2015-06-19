@@ -8,7 +8,7 @@
 #   hubot enc <string> - list various encoded strings
 #   hubot enc:[algo] <string> - display string encode with specified algorithm
 #   hubot enc:all <string> - list strings encode with all available algorithm
-#   hubow enc:list - list of all available algorithm
+#   hubot enc:list - list of all available algorithm
 #
 #   hubot dec <string> - list various decoded strings
 #   hubot dec:[algo] <string> - display string decode with specified algorithm
